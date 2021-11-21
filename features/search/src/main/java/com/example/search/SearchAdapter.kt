@@ -1,4 +1,4 @@
-package com.example.weatherapi.presentation.search
+package com.example.search
 
 import android.graphics.Typeface
 import android.text.Spannable
@@ -9,8 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.models.City
-import com.example.weatherapi.R
-import com.example.weatherapi.databinding.SearchItemBinding
+import com.example.search.databinding.SearchItemBinding
 
 class SearchAdapter(private val clickListener: (City) -> Unit) :
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {

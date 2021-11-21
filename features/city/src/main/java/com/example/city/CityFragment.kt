@@ -1,4 +1,4 @@
-package com.example.weatherapi.presentation.city
+package com.example.city
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,19 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.core.di.BasicModule
+import com.example.city.databinding.FragmentCityBinding
 import com.example.core.di.DaggerAppComponent
 import com.example.core.utils.Constants
-import com.example.weatherapi.App
-import com.example.weatherapi.databinding.FragmentCityBinding
 import com.example.weatherapi.di.DaggerCityComponent
-import com.example.weatherapi.di.DaggerSearchComponent
 import javax.inject.Inject
 
 class CityFragment : Fragment() {
 
     @Inject
     protected lateinit var viewModel: CityViewModel
+
     private lateinit var binding: FragmentCityBinding
     private lateinit var cityAdapter: CityAdapter
 
@@ -35,7 +33,9 @@ class CityFragment : Fragment() {
 
         DaggerCityComponent
             .builder()
-            .appComponent(DaggerAppComponent.builder().baseUrl("https://www.metaweather.com").build())
+            .appComponent(
+                DaggerAppComponent.builder().baseUrl("https://www.metaweather.com").build()
+            )
             .build()
             .inject(this)
 

@@ -15,7 +15,7 @@ class App : Application() {
             .builder()
             .baseUrl("https://www.metaweather.com")
             .build()
-        //component.inject(this)
+        component.inject(this)
     }
 
     companion object {

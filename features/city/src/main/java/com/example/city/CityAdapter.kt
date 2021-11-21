@@ -1,13 +1,11 @@
-package com.example.weatherapi.presentation.city
+package com.example.city
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.city.databinding.WeatherDayItemBinding
 import com.example.models.Day
-import com.example.weatherapi.R
-import com.example.weatherapi.databinding.WeatherDayItemBinding
-
 
 class CityAdapter() : RecyclerView.Adapter<CityAdapter.ViewHolder>() {
 

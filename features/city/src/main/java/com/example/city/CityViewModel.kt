@@ -1,4 +1,4 @@
-package com.example.weatherapi.presentation.city
+package com.example.city
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

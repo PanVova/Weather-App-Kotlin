@@ -21,7 +21,7 @@ interface AppComponent {
         fun build(): AppComponent
     }
 
-    //fun inject(app: Application)
+    fun inject(app: Application)
 
     fun getOkHttpClient(): OkHttpClient
     fun getLogging(): HttpLoggingInterceptor

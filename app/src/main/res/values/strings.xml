@@ -1,7 +1,3 @@
 <resources>
     <string name="app_name">WeatherAPI</string>
-    <string name="enter_city">Enter city</string>
-    <string name="search">Search</string>
-    <string name="minWeather">Min: %1$.0f</string>
-    <string name="maxWeather">Max: %1$.0f</string>
 </resources>

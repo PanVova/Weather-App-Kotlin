@@ -1,4 +1,4 @@
-package com.example.weatherapi.presentation.search
+package com.example.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

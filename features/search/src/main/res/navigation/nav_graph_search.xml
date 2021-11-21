@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/nav_graph_search"
     app:startDestination="@id/searchFragment">
 
-    <include app:graph="@navigation/nav_graph_search"/>
+
     <include app:graph="@navigation/nav_graph_city"/>
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.search.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        android:label="SearchFragment" >
         <action
             android:id="@+id/searchFragment_cityFragment"
             app:destination="@id/cityFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/cityFragment"
-        android:name="com.example.city.CityFragment"
-        android:label="fragment_city"
-        tools:layout="@layout/fragment_city" />
 </navigation>

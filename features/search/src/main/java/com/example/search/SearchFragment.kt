@@ -1,4 +1,4 @@
-package com.example.weatherapi.presentation.search
+package com.example.search
 
 import android.os.Bundle
 import android.text.Editable
@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.di.DaggerAppComponent
-import com.example.weatherapi.R
-import com.example.weatherapi.databinding.FragmentSearchBinding
 import com.example.core.utils.Constants
+import com.example.models.City
+import com.example.search.databinding.FragmentSearchBinding
 import com.example.weatherapi.di.DaggerSearchComponent
 import javax.inject.Inject
 
@@ -20,6 +20,8 @@ class SearchFragment : Fragment() {
 
     @Inject
     protected lateinit var viewModel: SearchViewModel
+
+
     private lateinit var binding: FragmentSearchBinding
     private lateinit var searchAdapter: SearchAdapter
 
@@ -37,7 +39,9 @@ class SearchFragment : Fragment() {
 
         DaggerSearchComponent
             .builder()
-            .appComponent(DaggerAppComponent.builder().baseUrl("https://www.metaweather.com").build())
+            .appComponent(
+                DaggerAppComponent.builder().baseUrl("https://www.metaweather.com").build()
+            )
             .build()
             .inject(this)
 
@@ -83,7 +87,7 @@ class SearchFragment : Fragment() {
         with(binding) {
             searchAdapter = SearchAdapter() {
                 val bundle = Bundle().apply { putInt(Constants.CITY_ID, it.woeid) }
-                findNavController().navigate(R.id.searchFragment_cityFragment, bundle)
+                findNavController().navigate(R.id.cityFragment, bundle)
             }
             with(searchRecyclerView) {
                 layoutManager = LinearLayoutManager(context)
@@ -92,7 +96,7 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun onCitiesLoad(list: List<com.example.models.City>) {
+    private fun onCitiesLoad(list: List<City>) {
         searchAdapter.setData(list)
     }
 
