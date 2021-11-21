@@ -1,8 +1,8 @@
 package com.example.weatherapi
 
 import android.app.Application
-import com.example.weatherapi.di.AppComponent
-import com.example.weatherapi.di.DaggerAppComponent
+import com.example.core.di.AppComponent
+import com.example.core.di.DaggerAppComponent
 import timber.log.Timber
 
 class App : Application() {
@@ -15,6 +15,7 @@ class App : Application() {
             .builder()
             .baseUrl("https://www.metaweather.com")
             .build()
+        //component.inject(this)
     }
 
     companion object {

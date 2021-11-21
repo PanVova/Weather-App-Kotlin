@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weatherapi.data.model.WeatherCity
-import com.example.weatherapi.domain.useCase.GetWeatherCityUseCase
+import com.example.domain.useCase.GetWeatherCityUseCase
+import com.example.models.WeatherCity
+import com.example.weatherapi.di.CityScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+@CityScope
 class CityViewModel @Inject constructor(
     private val getWeatherCityUseCase: GetWeatherCityUseCase
 ) : ViewModel() {
@@ -26,7 +26,6 @@ class CityViewModel @Inject constructor(
                 _data.postValue(it)
             }
         }
-
     }
 }
 

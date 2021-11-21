@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.core.di.BasicModule
+import com.example.core.di.DaggerAppComponent
+import com.example.core.utils.Constants
 import com.example.weatherapi.App
-import com.example.weatherapi.data.model.WeatherCity
 import com.example.weatherapi.databinding.FragmentCityBinding
-import com.example.weatherapi.utils.Constants
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import com.example.weatherapi.di.DaggerCityComponent
+import com.example.weatherapi.di.DaggerSearchComponent
 import javax.inject.Inject
 
 class CityFragment : Fragment() {
@@ -32,7 +32,14 @@ class CityFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        App.component.inject(this)
+
+        DaggerCityComponent
+            .builder()
+            .appComponent(DaggerAppComponent.builder().baseUrl("https://www.metaweather.com").build())
+            .build()
+            .inject(this)
+
+
         setupRecyclerView()
         setupObservers()
         val cityId = arguments?.getInt(Constants.CITY_ID)!!
@@ -41,7 +48,7 @@ class CityFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.data.observe(viewLifecycleOwner){
+        viewModel.data.observe(viewLifecycleOwner) {
             onCityLoad(it)
         }
     }
@@ -54,7 +61,7 @@ class CityFragment : Fragment() {
         }
     }
 
-    private fun onCityLoad(weatherCity: WeatherCity) {
+    private fun onCityLoad(weatherCity: com.example.models.WeatherCity) {
         binding.cityName.text = weatherCity.title
         cityAdapter.setData(weatherCity.consolidated_weather)
     }

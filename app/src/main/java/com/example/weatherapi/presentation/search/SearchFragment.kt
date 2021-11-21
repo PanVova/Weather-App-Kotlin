@@ -9,11 +9,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.weatherapi.App
+import com.example.core.di.DaggerAppComponent
 import com.example.weatherapi.R
-import com.example.weatherapi.data.model.City
 import com.example.weatherapi.databinding.FragmentSearchBinding
-import com.example.weatherapi.utils.Constants
+import com.example.core.utils.Constants
+import com.example.weatherapi.di.DaggerSearchComponent
 import javax.inject.Inject
 
 class SearchFragment : Fragment() {
@@ -33,7 +33,16 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        App.component.inject(this)
+
+
+        DaggerSearchComponent
+            .builder()
+            .appComponent(DaggerAppComponent.builder().baseUrl("https://www.metaweather.com").build())
+            .build()
+            .inject(this)
+
+
+
         setupView()
         setupObservers()
         setupRecyclerView()
@@ -83,7 +92,7 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun onCitiesLoad(list: List<City>) {
+    private fun onCitiesLoad(list: List<com.example.models.City>) {
         searchAdapter.setData(list)
     }
 

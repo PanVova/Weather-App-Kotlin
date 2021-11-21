@@ -8,3 +8,10 @@ dependencyResolutionManagement {
 }
 rootProject.name = "WeatherAPI"
 include ':app'
+include ':core'
+include ':models'
+include ':data'
+include ':domain'
+include ':features'
+include ':features:city'
+include ':features:search'

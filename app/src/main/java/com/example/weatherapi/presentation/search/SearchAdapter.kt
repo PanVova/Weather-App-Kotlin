@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.models.City
 import com.example.weatherapi.R
-import com.example.weatherapi.data.model.City
 import com.example.weatherapi.databinding.SearchItemBinding
 
 class SearchAdapter(private val clickListener: (City) -> Unit) :
