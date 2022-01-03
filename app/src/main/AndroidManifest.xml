@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.weatherapi">
+    package="com.weather.weatherapi">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".App"
+        android:name="com.weather.weatherapi.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
         <activity
-            android:name=".presentation.main.MainActivity"
+            android:name="com.weather.weatherapi.presentation.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
